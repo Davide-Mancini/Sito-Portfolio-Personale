@@ -8,8 +8,8 @@ function App() {
     <>
       <HashRouter>
         <Routes>
-          <Route path="/portfolio/#/" element={<Home />} />
-          <Route path="/portfolio/#/progetti" element={<Progetti />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/progetti" element={<Progetti />} />
         </Routes>
       </HashRouter>
     </>
