@@ -1,16 +1,30 @@
-# React + Vite
+# Sito Personale
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Questo repository contiene il codice sorgente del mio sito portfolio personale, realizzato per presentare il mio profilo professionale, le competenze tecniche, i progetti sviluppati e il mio percorso formativo.
+> Il sito ha l’obiettivo di offrire una panoramica chiara e immediata delle mie capacità come sviluppatore e dei progetti che rappresentano al meglio il mio percorso di crescita nel mondo della programmazione.
 
-Currently, two official plugins are available:
+# Informazioni presenti:
+## - Bio
+> Nel sito è presente una sezione dedicata alla mia bio, in cui racconto il mio percorso, i miei obiettivi professionali e la mia visione dello sviluppo software.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## - Competenze
+> Nel portfolio sono presentate le principali competenze tecniche, tra cui:
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
+- React
+- Java
+- Spring Boot
+- PostgreSQL
+- Postman
 
-## React Compiler
+## Progetti
+> La sezione progetti raccoglie una selezione dei lavori più significativi che ho realizzato.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Formazione
+> Nel sito è presente una sezione dedicata alla formazione, che include percorso di studi, corsi di programmazione seguiti, formazione tecnica
 
-## Expanding the ESLint configuration
+# Contatti
+> Nel sito è presente una sezione contatti per permettere di contattarmi facilmente
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
