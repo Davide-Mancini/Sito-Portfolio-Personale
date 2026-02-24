@@ -4,10 +4,10 @@
 > Il sito ha l’obiettivo di offrire una panoramica chiara e immediata delle mie capacità come sviluppatore e dei progetti che rappresentano al meglio il mio percorso di crescita nel mondo della programmazione.
 
 # Informazioni presenti:
-## - Bio
+## Bio
 > Nel sito è presente una sezione dedicata alla mia bio, in cui racconto il mio percorso, i miei obiettivi professionali e la mia visione dello sviluppo software.
 
-## - Competenze
+## Competenze
 > Nel portfolio sono presentate le principali competenze tecniche, tra cui:
 - HTML
 - CSS
@@ -25,6 +25,6 @@
 ## Formazione
 > Nel sito è presente una sezione dedicata alla formazione, che include percorso di studi, corsi di programmazione seguiti, formazione tecnica
 
-# Contatti
+## Contatti
 > Nel sito è presente una sezione contatti per permettere di contattarmi facilmente
 
