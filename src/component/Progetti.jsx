@@ -1,127 +1,99 @@
 import { useEffect, useState } from "react";
-import { Badge, Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { ArrowLeftCircleFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import PillNav from "./PillNav";
+import noimg from "../assets/noimg.png";
 
 const Progetti = () => {
-  const username = "Davide-Mancini";
-  const url = `https://api.github.com/users/${username}/repos?sort=updated&direction=desc`;
   const [Repo, setRepo] = useState([]);
-  //   const [languages, setLanguages] = useState({});
+
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((repos) => {
-        setRepo(repos);
-      })
-      .catch((error) =>
-        console.error("Errore nel recupero delle repository:", error),
-      );
+    fetch(
+      "https://api.github.com/users/Davide-Mancini/repos?sort=updated&direction=desc",
+    )
+      .then((r) => r.json())
+      .then(setRepo)
+      .catch((err) => console.error("Errore nel recupero delle repository:", err));
   }, []);
-  //   useEffect(() => {
-  //     fetch("https://api.github.com/repos/Davide-Mancini/Netflix-Copy/languages")
-  //       .then((response) => response.json())
-  //       .then((languages) => {
-  //         setLanguages(languages);
-  //       })
-  //       .catch((error) =>
-  //         console.error("Errore nel recupero delle repository:", error),
-  //       );
-  //   }, []);
-  //   console.log(languages);
 
   return (
-    <>
-      <Container
-        fluid
-        style={{ background: "#1a1a1a", position: "relative" }}
-        className=" d-flex justify-content-center align-items-center overflow-x-hidden min-vh-100 text-light  "
-      >
-        <PillNav
-          logo={"src/assets/photo_2025-12-01_23-01-03-removebg-preview.png"}
-          logoAlt="Company Logo"
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Progetti", href: "/progetti" },
-            { label: "Curriculum", href: "/CV_Davide_Mancini.pdf" },
-          ]}
-          activeHref="/progetti"
-          className="custom-nav"
-          ease="power2.easeOut"
-          baseColor="#c0b0b0"
-          pillColor="#ffffff"
-          hoveredPillTextColor="#ffffff"
-          pillTextColor="#722a2a"
-          theme="dark"
-          initialLoadAnimation
-        />
-        <Row
-          style={{
-            position: "absolute",
-            top: "10%",
-            zIndex: 1,
-          }}
-          className=" w-100 mx-5 px-5 mt-2"
-        >
-          <div className=" d-flex align-items-center justify-content-center">
-            <Link to="/" className=" text-decoration-none text-light me-auto">
-              <ArrowLeftCircleFill className=" me-auto fs-3" />
-            </Link>
-            <h1 className=" text-center me-auto">Progetti</h1>
-          </div>
-          {Repo.map((repo, i) => (
-            <Col xs={12} md={6} className=" mt-5 ps-5" key={i}>
-              <p className=" fw-bolder">Progetto più recente</p>
+    <div className="px-2 px-md-4 py-4 text-light">
+      <Row className="align-items-center mb-4">
+        <Col xs={2}>
+          <Link to="/" className="text-decoration-none text-light">
+            <ArrowLeftCircleFill className="fs-3" />
+          </Link>
+        </Col>
+        <Col xs={8} className="text-center">
+          <h1 className="mb-0 fw-bolder">Progetti</h1>
+        </Col>
+        <Col xs={2} />
+      </Row>
+
+      <Row className="g-4 pb-4">
+        {Repo.slice(0, 10).map((repo, i) => (
+          <Col xs={12} md={6} key={i}>
+            <div
+              className="d-flex p-3 rounded-4 flex-column h-100"
+              style={{
+                background: "#242323",
+                border: "1px solid rgba(192, 176, 176, 0.18)",
+              }}
+            >
               <div
-                className=" d-flex p-3 rounded-4 flex-column  "
-                style={{
-                  border: "5px solid #706f70ff",
-                  height: "468px",
-                }}
+                className="w-100 mb-3 rounded-3 overflow-hidden"
+                style={{ aspectRatio: "16/9" }}
               >
-                <div className=" w-100 " style={{ height: "250px" }}>
-                  <img
-                    src={`https://raw.githubusercontent.com/${repo?.owner.login}/${repo?.name}/${repo?.default_branch}/preview.png`}
-                    alt=""
-                    className=" rounded-3 border border-light border-2 w-100 h-100 object-fit-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = "src/assets/noimg.png";
-                    }}
-                    // style={{ width: "350px", height: "200px" }}
-                  />
-                </div>
-                <div className=" ms-3 d-flex justify-content-center flex-column">
-                  <h3>
-                    {repo?.name}{" "}
-                    <span>
-                      <Badge
-                        bg="warning"
-                        text="dark"
-                        style={{ fontSize: "13px" }}
-                      >
-                        {repo?.language}
-                      </Badge>
-                    </span>
-                  </h3>
-                  <p>{repo?.description}</p>
-                  <div className=" w-100">
-                    <a
-                      href={repo?.html_url}
-                      className=" text-decoration-none text-dark"
-                    >
-                      <Button variant="light" className=" w-100 fw-bold p-3 ">
-                        Vai alla Repository!
-                      </Button>
-                    </a>
-                  </div>
-                </div>
+                <img
+                  src={`https://raw.githubusercontent.com/${repo.owner.login}/${repo.name}/${repo.default_branch}/preview.png`}
+                  alt={`${repo.name} preview`}
+                  className="w-100 h-100"
+                  style={{ objectFit: "cover" }}
+                  onError={(e) => {
+                    e.currentTarget.src = noimg;
+                  }}
+                />
               </div>
-            </Col>
-          )).slice(0, 10)}
-        </Row>
-      </Container>
-    </>
+
+              <div className="d-flex flex-column flex-grow-1">
+                <div className="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                  <h4 className="mb-0">{repo.name}</h4>
+                  {repo.language && (
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        padding: "2px 9px",
+                        borderRadius: "999px",
+                        background: "rgba(192, 176, 176, 0.1)",
+                        color: "#c0b0b0",
+                        border: "1px solid rgba(192, 176, 176, 0.22)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {repo.language}
+                    </span>
+                  )}
+                </div>
+
+                <p className="text-white-50 small flex-grow-1">
+                  {repo.description}
+                </p>
+
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-light w-100 fw-bold p-2 text-dark text-decoration-none mt-2"
+                >
+                  Vai alla Repository
+                </a>
+              </div>
+            </div>
+          </Col>
+        ))}
+      </Row>
+    </div>
   );
 };
+
 export default Progetti;

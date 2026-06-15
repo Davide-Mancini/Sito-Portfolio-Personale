@@ -1,22 +1,23 @@
-/* .gradienteViola {
-  background: #5d17eb;
-  /* background: linear-gradient(
-    180deg,
-    rgb(82, 39, 255) 0%,
-    rgb(88, 1, 114) 50%,
-    rgb(26, 26, 26) 100%
-  ); */
-/* }
-.foto-responsive {
-  width: 100%;
-} */
-/* @media screen and (min-widht: 768px) {
-  .foto-responsive {
-    width: 25%;
-  }
-} */
-
 .social:hover {
-  scale: 1.1;
-  transition: 0.5s;
+  scale: 1.05;
+  transition: 0.3s;
+}
+
+.skill-card:hover {
+  scale: 1.05;
+  transition: 0.3s;
+}
+
+.profile-photo {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .profile-photo {
+    width: 160px;
+    height: 160px;
+  }
 }

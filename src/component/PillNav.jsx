@@ -224,7 +224,8 @@ const PillNav = ({
     href.startsWith("//") ||
     href.startsWith("mailto:") ||
     href.startsWith("tel:") ||
-    href.startsWith("#");
+    href.startsWith("#") ||
+    href.endsWith(".pdf");
 
   const isRouterLink = (href) => href && !isExternalLink(href);
 
@@ -252,8 +253,6 @@ const PillNav = ({
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScroll]);
-  console.log(lastScroll);
-
   return (
     <div className="pill-nav-container">
       <nav
@@ -292,8 +291,7 @@ const PillNav = ({
           <ul className="pill-list" role="menubar">
             {items.map((item, i) => (
               <li key={item.href || `item-${i}`} role="none">
-                {/* HO COMMENTATO QUESTA PARTE ALTRIMENTI IL LINK AL CURRICULUM NON FUNZIONA */}
-                {/* {isRouterLink(item.href) ? (
+                {isRouterLink(item.href) ? (
                   <Link
                     role="menuitem"
                     to={item.href}
@@ -316,30 +314,30 @@ const PillNav = ({
                       </span>
                     </span>
                   </Link>
-                ) : ( */}
-                <a
-                  role="menuitem"
-                  href={item.href}
-                  className={`pill${activeHref === item.href ? " is-active" : ""}`}
-                  aria-label={item.ariaLabel || item.label}
-                  onMouseEnter={() => handleEnter(i)}
-                  onMouseLeave={() => handleLeave(i)}
-                >
-                  <span
-                    className="hover-circle"
-                    aria-hidden="true"
-                    ref={(el) => {
-                      circleRefs.current[i] = el;
-                    }}
-                  />
-                  <span className="label-stack">
-                    <span className="pill-label">{item.label}</span>
-                    <span className="pill-label-hover" aria-hidden="true">
-                      {item.label}
+                ) : (
+                  <a
+                    role="menuitem"
+                    href={item.href}
+                    className={`pill${activeHref === item.href ? " is-active" : ""}`}
+                    aria-label={item.ariaLabel || item.label}
+                    onMouseEnter={() => handleEnter(i)}
+                    onMouseLeave={() => handleLeave(i)}
+                  >
+                    <span
+                      className="hover-circle"
+                      aria-hidden="true"
+                      ref={(el) => {
+                        circleRefs.current[i] = el;
+                      }}
+                    />
+                    <span className="label-stack">
+                      <span className="pill-label">{item.label}</span>
+                      <span className="pill-label-hover" aria-hidden="true">
+                        {item.label}
+                      </span>
                     </span>
-                  </span>
-                </a>
-                {/* )} */}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
